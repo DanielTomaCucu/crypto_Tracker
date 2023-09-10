@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  messariApiKey: '12345',
+  messariApiKey: '-1IXvrY5mzqLOPfv+UM1AD3FcgDsCh1nWIaTg3-ULv79CUrm',
 };
