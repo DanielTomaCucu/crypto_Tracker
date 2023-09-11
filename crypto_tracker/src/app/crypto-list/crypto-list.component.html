@@ -1,1 +1,24 @@
-<p>crypto-list works!</p>
+<form class="w-100 md:w-4/5 p-6 m-auto mt-10 bg-white rounded-lg shadow-md">
+  <input
+    class="w-full px-3 py-2 leading-tight text-gray-700 border rounded-lg shadow appearance-none focus:outline-none focus:shadow-outline"
+    id="Search"
+    type="text"
+    placeholder="Search"
+  />
+</form>
+
+<div
+  class="flex gap-1 w-100 md:w-4/5 p-3 py-5 m-auto bg-inherit border mt-1 text-sm"
+  *ngFor="let crypto of cryptoList"
+>
+
+  <p>{{ crypto.name }}</p>
+  <p>{{ crypto.symbol }}</p>
+  <p>{{ crypto.metrics.market_data.price_usd | number }}</p>
+  <p>
+    {{ crypto.metrics.market_data.percent_change_usd_last_1_hour | number }} %
+  </p>
+  <p>
+    {{ crypto.metrics.market_data.percent_change_usd_last_24_hours | number }}%
+  </p>
+</div>

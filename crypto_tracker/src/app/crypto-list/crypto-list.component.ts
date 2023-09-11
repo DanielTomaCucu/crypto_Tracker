@@ -7,8 +7,12 @@ import { CryptoListService } from './crypto-list.service';
   styleUrls: ['./crypto-list.component.css'],
 })
 export class CryptoListComponent {
+  cryptoList: any;
   constructor(private cryptoListService: CryptoListService) {}
   ngOnInit() {
-    this.cryptoListService.getAssets().subscribe((data) => console.log(data));
+    this.cryptoListService.getAssets().subscribe((data) => {
+      console.log(data.data);
+      this.cryptoList = data.data;
+    });
   }
 }
