@@ -1,0 +1,8 @@
+td {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: #fafdff;
+  cursor: pointer;
+}
