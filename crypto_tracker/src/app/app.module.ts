@@ -8,8 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
+import { TradingViewWidgetComponent } from './crypto-list/trading-view-widget/trading-view-widget.component';
 @NgModule({
-  declarations: [AppComponent, CryptoListComponent],
+  declarations: [AppComponent, CryptoListComponent, TradingViewWidgetComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
