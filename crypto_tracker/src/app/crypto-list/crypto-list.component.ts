@@ -14,7 +14,7 @@ export class CryptoListComponent implements AfterViewInit {
 
   totalItems: number = 500;
   pageIndex: number = 1;
-  pageSize: number = 50; 
+  pageSize: number = 50;
 
   displayedColumns: string[] = [
     'index',
