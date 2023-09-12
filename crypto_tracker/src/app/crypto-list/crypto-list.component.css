@@ -10,3 +10,6 @@ td {
 .no-margin {
   margin-bottom: 0px;
 }
+mat-table{
+box-shadow: none;
+}
