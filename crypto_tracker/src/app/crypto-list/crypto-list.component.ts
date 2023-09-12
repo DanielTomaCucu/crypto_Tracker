@@ -14,12 +14,14 @@ export class CryptoListComponent {
   constructor(private cryptoListService: CryptoListService) {}
 
   displayedColumns: string[] = [
+    'index',
     'name',
     'price',
     'oneH',
     'oneDay',
     'mcap',
     'volume',
+    'supply'
   ];
   dataSource!: MatTableDataSource<any>;
 

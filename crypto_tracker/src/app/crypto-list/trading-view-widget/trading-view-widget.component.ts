@@ -43,7 +43,7 @@ export class TradingViewWidgetComponent {
             },
             {
                 "description": "Celo",
-                "proName": "CELO"
+                "proName": "BINANCE:CELOUSDT"
             }
         ],
         "showSymbolLogo": true,
