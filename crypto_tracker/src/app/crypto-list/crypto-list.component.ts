@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { CryptoListService } from './crypto-list.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -8,10 +8,13 @@ import { MatSort } from '@angular/material/sort';
   templateUrl: './crypto-list.component.html',
   styleUrls: ['./crypto-list.component.css'],
 })
-export class CryptoListComponent {
+export class CryptoListComponent implements AfterViewInit {
   cryptoList: any;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private cryptoListService: CryptoListService) {}
+
+  totalItems: number = 500;
+  pageIndex: number = 1;
+  pageSize: number = 50;
 
   displayedColumns: string[] = [
     'index',
@@ -21,22 +24,48 @@ export class CryptoListComponent {
     'oneDay',
     'mcap',
     'volume',
-    'supply'
+    'supply',
   ];
-  dataSource!: MatTableDataSource<any>;
+  dataSource = new MatTableDataSource<any>([]);
 
-  ngOnInit() {
-    this.cryptoListService.getAssets().subscribe((data) => {
-      console.log(data.data);
-      this.cryptoList = data.data;
-      this.dataSource = new MatTableDataSource(data.data);
-      this.dataSource.sort = this.sort;
-    });
+  constructor(private cryptoListService: CryptoListService) {}
+
+  ngAfterViewInit() {
+    this.fetchData();
   }
+
+  fetchData() {
+    this.cryptoListService
+      .getAssets(this.pageIndex, this.pageSize)
+      .subscribe((data) => {
+        this.cryptoList = data.data;
+        this.dataSource.data = this.cryptoList;
+      });
+  }
+
+  pageChanged(event: any) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.fetchData();
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
+  previousPage() {
+    if (this.pageIndex > 1) {
+      this.pageIndex--;
+      this.fetchData();
+    }
+  }
 
+  nextPage() {
+    const maxPage = Math.ceil(this.totalItems / this.pageSize);
+    if (this.pageIndex < maxPage) {
+      this.pageIndex++;
+      this.fetchData();
+    }
   }
 }

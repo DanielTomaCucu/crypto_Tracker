@@ -7,12 +7,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CryptoListService {
-  assets = 'https://data.messari.io/api/v2/assets?limit=50';
+  assets = 'https://data.messari.io/api/v2/assets';
   constructor(private http: HttpClient) {}
 
-  getAssets(): Observable<any> {
-    return this.http.get<any>(this.assets, {
-      headers: { 'x-messari-api-key': environment.messariApiKey },
-    });
+  getAssets(pageIndex: number = 1, pageSize: number = 50): Observable<any> {
+    return this.http.get<any>(`${this.assets}?limit=${pageSize}&page=${pageIndex}`);
   }
 }
