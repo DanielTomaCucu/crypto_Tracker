@@ -2,13 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SingleCryptoDetailsComponent } from './single-crypto-details.component';
 import { RouterModule, Routes } from '@angular/router';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { ChartWidgetComponent } from './chart-widget/chart-widget.component';
 const routes: Routes = [{ path: '', component: SingleCryptoDetailsComponent }];
 @NgModule({
-  
-  declarations:[SingleCryptoDetailsComponent],
+  declarations: [SingleCryptoDetailsComponent, ChartWidgetComponent],
   exports: [RouterModule],
-  imports: [CommonModule, RouterModule.forChild(routes)],
-
+  imports: [
+    CommonModule,
+    MatTabsModule,
+    MatIconModule,
+    RouterModule.forChild(routes),
+  ],
 })
 export class SingleCryptoDetailsModule {}

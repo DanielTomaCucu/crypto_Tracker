@@ -8,4 +8,15 @@ import { environment } from 'src/environments/environment';
 export class SingleCryptoDetailsService {
   constructor(private http: HttpClient) {}
 
+  coin = ' https://data.messari.io/api/v1/assets/';
+
+  getCoinMetrics(slug: string|null): Observable<any> {
+    const header = new HttpHeaders().set(
+      'x-messari-api-key',
+      environment.messariApiKey
+    );
+    return this.http.get<any>(`${this.coin}${slug}/metrics`, {
+      headers: header,
+    });
+  }
 }

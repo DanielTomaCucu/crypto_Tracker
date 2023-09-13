@@ -1,1 +1,69 @@
-<p>single-crypto-details works!</p>
+<div class="md:ml-20 md:mr-20 md:mt-10">
+  <div class="bg-white p-5 rounded-lg shadow-md m-3">
+    <div class="flex justify-between gap-2 flex-wrap content-end mb-2">
+      <p class="text-2xl m-5">
+        {{ cryptoInfo?.name }}
+        <span class="font-thin text-sm m-0">{{ cryptoInfo?.symbol }}</span>
+      </p>
+      <p class="font-medium text-xl mt-1 self-center">
+        Price $ {{ cryptoInfo?.market_data.price_usd | number }}
+        <span
+          class="text-sm font-light px-1 py-1 rounded text-emerald-600 bg-emerald-200"
+        >
+          <mat-icon class="w-1 h-1 -mb-1.5 -ml-1">arrow_drop_up</mat-icon
+          >{{
+            cryptoInfo?.market_data.percent_change_usd_last_1_hour
+              | number : "1.1-2"
+          }}
+          %</span
+        >
+      </p>
+    </div>
+
+    <div class="h-3 bg-gray-300 rounded">
+      <div
+        class="h-full rounded"
+        [style.width]="percentage + '%'"
+        [style.background]="getGradientColor(percentage)"
+      ></div>
+    </div>
+    <div class="flex justify-between">
+      <p class="font-light">
+        ${{ cryptoInfo?.market_data.ohlcv_last_24_hour.low | number }}
+      </p>
+      <p class="font-light">24H Range</p>
+      <p class="font-light">
+        ${{ cryptoInfo?.market_data.ohlcv_last_24_hour.high | number }}
+      </p>
+    </div>
+
+    <div class="mt-4 grid lg:grid-cols-2 md:grid-cols-1 gap-1">
+      <div
+        class="flex flex-1 justify-between border py-2 px-3 rounded text-gray-600"
+      >
+        <p>MarketCap</p>
+        <p>${{ cryptoInfo?.marketcap.current_marketcap_usd | number }}</p>
+      </div>
+      <div
+        class="flex flex-1 justify-between border py-2 px-3 rounded text-gray-600"
+      >
+        <p>Anual Inflation</p>
+        <p>
+          {{ cryptoInfo?.supply.annual_inflation_percent | number : "1.1-1" }}%
+        </p>
+      </div>
+
+      <div class="flex justify-between border py-2 px-3 rounded text-gray-600">
+        <p>Circulation Supply</p>
+        <p>${{ cryptoInfo?.supply.circulating | number }}</p>
+      </div>
+      <div class="flex justify-between border py-2 px-3 rounded text-gray-600">
+        <p>Real Volume in 24H</p>
+        <p>${{ cryptoInfo?.market_data.real_volume_last_24_hours | number }}</p>
+      </div>
+    </div>
+  </div>
+  <div style="width: 100%; height: 450px">
+    <app-chart-widget [symbol]="symbol"></app-chart-widget>
+  </div>
+</div>
