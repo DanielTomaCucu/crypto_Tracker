@@ -1,3 +1,4 @@
+<app-trading-view-widget></app-trading-view-widget>
 <div class="mx-2 mt-10">
   <input
     class="w-full h-10 m-auto rounded-lg border-2 mt-10 mb-5 px-10 py-5"
@@ -22,7 +23,7 @@
 
       <ng-container matColumnDef="name" sticky>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-        <td class="md:whitespace-nowrap" mat-cell *matCellDef="let row">
+        <td (click)="redirectToCoin(row.slug)" class="md:whitespace-nowrap" mat-cell *matCellDef="let row">
           <span class="font-medium">{{ row.name }} </span>
           <span class="text-zinc-500">{{ row.symbol }}</span>
         </td>
@@ -176,3 +177,4 @@
     </button>
   </div>
 </div>
+
