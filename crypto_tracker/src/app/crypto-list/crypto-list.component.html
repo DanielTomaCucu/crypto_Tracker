@@ -7,7 +7,6 @@
     (keyup)="applyFilter($event)"
     #input
   />
-  <a routerLink="/t">Go to lazy module</a>
   <div class="w-full overflow-scroll">
     <mat-table
       class="mat-elevation-z8"
@@ -24,7 +23,7 @@
 
       <ng-container matColumnDef="name" sticky>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-        <td (click)="redirectToCoin(row.slug)" class="md:whitespace-nowrap" mat-cell *matCellDef="let row">
+        <td (click)="redirectToCoin(row.symbol)" class="md:whitespace-nowrap" mat-cell *matCellDef="let row">
           <span class="font-medium">{{ row.name }} </span>
           <span class="text-zinc-500">{{ row.symbol }}</span>
         </td>
