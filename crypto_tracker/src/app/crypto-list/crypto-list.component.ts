@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { CryptoListService } from './crypto-list.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crypto-list',
@@ -28,7 +29,7 @@ export class CryptoListComponent implements AfterViewInit {
   ];
   dataSource = new MatTableDataSource<any>([]);
 
-  constructor(private cryptoListService: CryptoListService) {}
+  constructor(private cryptoListService: CryptoListService, private router:Router) {}
 
   ngAfterViewInit() {
     this.fetchData();
@@ -67,5 +68,8 @@ export class CryptoListComponent implements AfterViewInit {
       this.pageIndex++;
       this.fetchData();
     }
+  }
+  redirectToCoin(slug:string) {
+this.router.navigate([`/${slug}`])
   }
 }
