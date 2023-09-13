@@ -8,7 +8,7 @@ const routes: Routes = [
     component: CryptoListComponent,
   },
   {
-    path: 't',
+    path: ':name',
     loadChildren: () =>
       import('./single-crypto-details/single-crypto-details.module').then(
         (m) => m.SingleCryptoDetailsModule
