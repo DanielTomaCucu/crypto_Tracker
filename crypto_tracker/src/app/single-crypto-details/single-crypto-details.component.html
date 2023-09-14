@@ -5,7 +5,7 @@
         {{ cryptoInfo?.name }}
         <span class="font-thin text-sm m-0">{{ cryptoInfo?.symbol }}</span>
         <span
-          class="font-thin text-xs ml-1 bg-sky-200 text-cyan-800 p-1 rounded"
+          class="font-thin text-xs ml-1 bg-zinc-100 text-zinc-800 py-1 px-2 rounded"
         >
           Rank {{ cryptoInfo?.marketcap.rank }}</span
         >
@@ -16,7 +16,7 @@
           class="text-xs font-light px-1 py-1 rounded"
           [ngClass]="
             cryptoInfo?.market_data.price_usd > 0
-              ? 'text-emerald-600 bg-emerald-200'
+              ? 'text-emerald-600 bg-emerald-100'
               : ' text-red-800 pr-2 bg-red-100 opacity-90'
           "
         >

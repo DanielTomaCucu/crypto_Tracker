@@ -1,8 +1,34 @@
-<div class="bg-white p-5 rounded-lg shadow-md m-3 ">
-<p class="text-xl">Info</p>
+<div class="bg-white p-5 rounded-lg shadow-md m-3">
+  <p class="text-xl">
+    Info
+    <span class="text-xs p-1 bg-sky-100 text-cyan-600 rounded-full px-2"
+      >{{ info?.profile.general.overview.category }}
+    </span>
+  </p>
 
-<div>
-  <a [href]="info?.profile.economics.token.block_explorers[0].link" target="_blank"><p> Explorer</p></a>
-  <p></p>
-</div>
+  <div class="flex mt-3 flex-wrap gap-1">
+    <a
+      *ngIf="info?.profile?.economics?.token?.block_explorers"
+      class="flex bg-zinc-100 max-w-fit p-2 rounded-lg"
+      [href]="info?.profile.economics.token?.block_explorers[0].link"
+      target="_blank"
+      ><p class="">Explorer</p>
+      <mat-icon class="text-xs text-gray-800 redirect-icon"
+        >open_in_new</mat-icon
+      ></a
+    >
+    <div *ngFor="let links of info?.profile.general.overview?.official_links">
+      <a
+        [href]="links.link"
+        class="flex bg-zinc-100 max-w-fit p-2 rounded-lg align-center"
+      >
+        <p class="mb-0">
+          {{ links.name }}
+        </p>
+        <mat-icon class="text-xs text-gray-800 redirect-icon"
+          >open_in_new</mat-icon
+        ></a
+      >
+    </div>
+  </div>
 </div>
