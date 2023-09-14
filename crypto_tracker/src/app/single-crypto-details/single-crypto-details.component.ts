@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SingleCryptoDetailsComponent {
   cryptoInfo: any;
   percentage: any;
-  symbol: string | null | undefined;
+  symbol: string | undefined | null;
   constructor(
     private singlrCryptoDetails: SingleCryptoDetailsService,
     private route: ActivatedRoute
@@ -20,7 +20,6 @@ export class SingleCryptoDetailsComponent {
     this.symbol = this.route.snapshot.paramMap.get('name');
     this.singlrCryptoDetails.getCoinMetrics(this.symbol).subscribe((data) => {
       this.cryptoInfo = data.data;
-      console.log(data.data);
       let low = this.cryptoInfo.market_data.ohlcv_last_24_hour.low;
       let high = this.cryptoInfo.market_data.ohlcv_last_24_hour.high;
       this.percentage =
