@@ -7,8 +7,7 @@ import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
 })
 export class ChartWidgetComponent {
   private tradingViewScriptUrl = 'https://s3.tradingview.com/tv.js';
-  //public symbol = 'BTC';
-  @Input() symbol: string | null | undefined;
+  @Input() symbol: string | null | undefined | 'BTC';
   constructor(private renderer: Renderer2, private el: ElementRef) {}
 
   ngOnInit() {
@@ -44,8 +43,7 @@ export class ChartWidgetComponent {
       locale: 'en',
       enable_publishing: false,
       gridColor: 'rgba(101, 101, 101, 0.06)',
-      hide_top_toolbar: true,
-      hide_legend: true,
+
       save_image: false,
       hide_volume: true,
       container_id: 'tradingview_a8029',

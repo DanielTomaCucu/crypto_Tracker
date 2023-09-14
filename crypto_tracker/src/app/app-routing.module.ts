@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '', // redirects any unknown paths to CryptoListComponent
+    redirectTo: '', 
     pathMatch: 'full',
   },
 ];

@@ -10,7 +10,7 @@ export class SingleCryptoDetailsService {
 
   coin = ' https://data.messari.io/api/v1/assets/';
 
-  getCoinMetrics(slug: string|null): Observable<any> {
+  getCoinMetrics(slug: string | undefined|null): Observable<any> {
     const header = new HttpHeaders().set(
       'x-messari-api-key',
       environment.messariApiKey

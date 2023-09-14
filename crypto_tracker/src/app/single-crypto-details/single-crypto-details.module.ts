@@ -5,9 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { ChartWidgetComponent } from './chart-widget/chart-widget.component';
+import { SingleCryptoInfoComponent } from './single-crypto-info/single-crypto-info.component';
 const routes: Routes = [{ path: '', component: SingleCryptoDetailsComponent }];
 @NgModule({
-  declarations: [SingleCryptoDetailsComponent, ChartWidgetComponent],
+  declarations: [SingleCryptoDetailsComponent, ChartWidgetComponent, SingleCryptoInfoComponent],
   exports: [RouterModule],
   imports: [
     CommonModule,
