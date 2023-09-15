@@ -1,5 +1,7 @@
-<div class="md:ml-20 md:mr-20 md:mt-10 grid xl:grid-cols-3">
-  <div class="bg-white p-5 rounded-lg shadow-md m-3 xl:col-span-2">
+<div
+  class= "m-3 md:ml-20 md:mr-20 md:mt-10 grid xl:grid-cols-3 bg-white p-5 rounded-lg shadow-md"
+>
+  <div class="m-1 xl:col-span-2">
     <div class="flex justify-between gap-2 flex-wrap content-end mb-2">
       <p class="text-2xl m-5">
         {{ cryptoInfo?.name }}
@@ -71,7 +73,8 @@
       <div class="flex justify-between border py-2 px-3 rounded text-gray-600">
         <p>Circulation Supply</p>
         <p>
-          {{ cryptoInfo?.supply.circulating | number }} {{ cryptoInfo?.symbol }}
+          {{ cryptoInfo?.supply.circulating | number }}
+          {{ cryptoInfo?.symbol }}
         </p>
       </div>
       <div class="flex justify-between border py-2 px-3 rounded text-gray-600">
@@ -81,10 +84,86 @@
     </div>
   </div>
   <app-single-crypto-info [symbol]="symbol"></app-single-crypto-info>
-
 </div>
-  <div class="bg-white p-5 rounded-lg shadow-md m-3 md:ml-20 md:mr-20 md:mt-10">
-    <div style="width: 100%; height: 450px">
-      <app-chart-widget [symbol]="symbol"></app-chart-widget>
+
+<div
+  class="bg-white p-5 rounded-lg shadow-md m-3 md:ml-20 md:mr-20 md:mt-10 grid xl:grid-cols-3 gap-3"
+>
+  <div style="width: 100%; height: 450px" class="xl:col-span-2">
+    <app-chart-widget [symbol]="symbol"></app-chart-widget>
+  </div>
+  <div class="p-5 border rounded">
+    <p class="text-lg pb-2">Statistics</p>
+    <div>
+      <div class="flex justify-between border-b py-4">
+        <p>Real Volume in 24H</p>
+        <p>{{ cryptoInfo?.market_data.real_volume_last_24_hours | number }}$</p>
+      </div>
+      <div class="flex justify-between border-b py-4">
+        <p>Real Volume changed in 24H</p>
+        <p>
+          {{
+            cryptoInfo?.marketcap.volume_turnover_last_24_hours_percent
+              | number
+          }}%
+        </p>
+      </div>
+      <div class="flex justify-between border-b py-4">
+        <p>Price change in last hour</p>
+        <p>
+          {{ cryptoInfo?.market_data.percent_change_usd_last_1_hour | number }}%
+        </p>
+      </div>
+      <div class="flex justify-between border-b py-4">
+        <p>Price change in last 24 hours</p>
+        <p>
+          {{
+            cryptoInfo?.market_data.percent_change_usd_last_24_hours | number
+          }}%
+        </p>
+      </div>
+      <div class="flex justify-between border-b py-4">
+        <p>Dominance</p>
+        <p>{{ cryptoInfo?.marketcap.marketcap_dominance_percent | number }}%</p>
+      </div>
+      <div class="flex justify-between border-b py-4">
+        <p>Marketcap USD</p>
+        <p>{{ cryptoInfo?.marketcap.current_marketcap_usd | number }}$</p>
+      </div>
+      <div class="flex justify-between border-b py-4">
+        <p>Rank</p>
+        <p>{{ cryptoInfo?.marketcap.rank }}</p>
+      </div>
+      <div class="flex justify-between border-b py-4 items-center">
+        <p>All Time High</p>
+        <div>
+          <p>
+            {{ cryptoInfo?.all_time_high.price | number }}$
+            <span class="text-red-700 ml-1"
+              >{{ cryptoInfo?.all_time_high.percent_down | number : "1.1-1" }}%
+            </span>
+          </p>
+          <p class="text-xs">
+            At: {{ cryptoInfo?.all_time_high.at | date }} (Days:
+            {{ cryptoInfo?.all_time_high.days_since }})
+          </p>
+        </div>
+      </div>
+      <div class="flex justify-between border-b py-4 items-center">
+        <p>All Time low</p>
+        <div>
+          <p class="content-end">
+            {{ cryptoInfo?.cycle_low.price | number }}$
+            <span class="text-green-700 ml-1 content-end"
+              >{{ cryptoInfo?.cycle_low.percent_up | number : "1.1-1" }}%
+            </span>
+          </p>
+          <p class="text-xs">
+            At: {{ cryptoInfo?.cycle_low.at | date }} (Days:
+            {{ cryptoInfo?.cycle_low.days_since }})
+          </p>
+        </div>
+      </div>
     </div>
   </div>
+</div>
