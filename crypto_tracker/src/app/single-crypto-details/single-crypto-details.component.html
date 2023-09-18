@@ -94,31 +94,25 @@
       <app-chart-widget [symbol]="symbol"></app-chart-widget>
     </div>
 
-  <div class="min-w-fit border rounded min-h-fit mt-3 p-5 bg-zinc-50">
-  <p class="text-lg pb-5">{{cryptoInfo?.name}} Converter</p>
-  <div class="flex items-center flex-wrap flex-col md:flex-row gap-1">
-    <input
-      class="border  p-5 text-lg rounded grow self-stretch  "
-      type="number"
-      id="number1"
-      placeholder="USD"
-      [(ngModel)]="usdValue"
-      (input)="convertUsdToCrypto()"
-    />
-    <mat-icon class="border convert">sync_alt</mat-icon>
-    <input
-      type="number"
-      id="number2"
-      name="number2"
-      class="border p-5 text-lg rounded grow self-stretch"
-      placeholder="{{ symbol }}"
-      [(ngModel)]="cryptoValue"
-      (input)="convertCryptoToUsd()"
-    />
-  </div>
-</div>
-
-
+    <div class="min-w-fit border rounded min-h-fit mt-3 p-5 bg-zinc-50">
+      <p class="text-lg pb-5">{{ cryptoInfo?.name }} Converter</p>
+      <div class="flex items-center flex-wrap flex-col md:flex-row gap-1">
+        <input
+          class="border p-5 text-lg rounded grow self-stretch"
+          placeholder="USD"
+          [(ngModel)]="cryptoValue"
+          (input)="convertCryptoToUsd()"
+        />
+        <mat-icon class="border convert">sync_alt</mat-icon>
+        <input
+          type="number"
+          class="border p-5 text-lg rounded grow self-stretch"
+          placeholder="{{ symbol }}"
+          [(ngModel)]="usdValue"
+          (input)="convertUsdToCrypto()"
+        />
+      </div>
+    </div>
   </div>
 
   <div class="p-5 border rounded">
