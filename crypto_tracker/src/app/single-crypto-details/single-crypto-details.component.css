@@ -9,3 +9,6 @@ p {
   background: #ffffff;
   color: #6a6a6a;
 }
+input {
+  min-width: max-content;
+}
