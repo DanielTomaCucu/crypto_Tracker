@@ -6,15 +6,21 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { ChartWidgetComponent } from './chart-widget/chart-widget.component';
 import { SingleCryptoInfoComponent } from './single-crypto-info/single-crypto-info.component';
+import { FormsModule } from '@angular/forms';
 const routes: Routes = [{ path: '', component: SingleCryptoDetailsComponent }];
 @NgModule({
-  declarations: [SingleCryptoDetailsComponent, ChartWidgetComponent, SingleCryptoInfoComponent],
+  declarations: [
+    SingleCryptoDetailsComponent,
+    ChartWidgetComponent,
+    SingleCryptoInfoComponent,
+  ],
   exports: [RouterModule],
   imports: [
     CommonModule,
     MatTabsModule,
     MatIconModule,
     RouterModule.forChild(routes),
+    FormsModule,
   ],
 })
 export class SingleCryptoDetailsModule {}

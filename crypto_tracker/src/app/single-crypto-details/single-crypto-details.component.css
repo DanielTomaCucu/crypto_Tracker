@@ -1,3 +1,11 @@
-p{
- margin:0px;
+p {
+  margin: 0px;
+}
+.convert {
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #6a6a6a;
 }
