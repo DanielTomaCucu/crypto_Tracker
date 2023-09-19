@@ -7,14 +7,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { ChartWidgetComponent } from './chart-widget/chart-widget.component';
 import { SingleCryptoInfoComponent } from './single-crypto-info/single-crypto-info.component';
 import { FormsModule } from '@angular/forms';
+import { RemoveAnchorPipe } from './removeAnchor.pipe';
+import { InvestorsComponent } from './investors/investors.component';
+
 const routes: Routes = [{ path: '', component: SingleCryptoDetailsComponent }];
+
 @NgModule({
   declarations: [
     SingleCryptoDetailsComponent,
     ChartWidgetComponent,
     SingleCryptoInfoComponent,
+    RemoveAnchorPipe,
+    InvestorsComponent,
   ],
-  exports: [RouterModule],
+  exports: [RouterModule, RemoveAnchorPipe],
   imports: [
     CommonModule,
     MatTabsModule,

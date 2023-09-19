@@ -1,0 +1,47 @@
+<div class="m-1 md:mt-10 bg-white p-3 rounded-lg shadow-md">
+  <p class="text-xl pb-2">Individuals</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div
+      *ngFor="let inv of cryptoInv?.individuals"
+      class="border flex p-3 rounded content-center"
+    >
+      <img
+        *ngIf="inv.avatar_url; else noAvatar"
+        [src]="inv.avatar_url"
+        class="w-20 h-20 rounded-full border"
+      />
+      <div class="self-center p-2">
+        <p>{{ inv.title }}</p>
+        <p class="bg-zinc-100 w-fit rounded p-1">
+          {{ inv.first_name }} {{ inv.last_name }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-xl pb-2 pt-10">Organizations</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div
+      *ngFor="let inv of cryptoInv?.organizations"
+      class="border flex p-3 rounded content-center"
+    >
+      <img
+        *ngIf="inv.logo; else noAvatar"
+        [src]="inv.logo"
+        class="w-20 h-20 rounded-full border self-center"
+      />
+
+      <div class="self-center p-2">
+        <p>{{ inv.name }}</p>
+        <p class="line-clamp-5 pt-2">
+          {{ inv.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noAvatar>
+  <mat-icon class="noAvatar text-zinc-800 self-center"
+    >person</mat-icon
+  ></ng-template
+>

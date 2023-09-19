@@ -12,7 +12,7 @@ export class SingleCryptoInfoComponent {
   constructor(private singleCryptoInfo: SingleCryptoInfoService) {}
   ngOnInit() {
     this.singleCryptoInfo.getCryptoInfo(this.symbol).subscribe((data) => {
-      console.log(data.data);
+      console.log(data.data.profile.contributors);
       this.info=data.data
     });
   }
