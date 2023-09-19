@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SingleCryptoDetailsService } from './single-crypto-details.service';
 import { ActivatedRoute } from '@angular/router';
+import { SingleCryptoInfoService } from './single-crypto-info/single-crypto-info.service';
 
 @Component({
   selector: 'app-single-crypto-details',
@@ -9,15 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SingleCryptoDetailsComponent {
   cryptoInfo: any;
+  cryptoDesc: any;
   percentage: any;
   symbol: string | undefined | null;
 
-  usdValue!: number ;
+  usdValue!: number;
   cryptoValue!: number;
   cryptoRate: number = 0;
   constructor(
     private singlrCryptoDetails: SingleCryptoDetailsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private singleCryptoInfoService: SingleCryptoInfoService
   ) {}
 
   ngOnInit() {
@@ -31,6 +34,13 @@ export class SingleCryptoDetailsComponent {
       this.percentage =
         ((this.cryptoInfo.market_data.price_usd - low) / (high - low)) * 100;
     });
+    this.singleCryptoInfoService
+      .getCryptoInfo(this.symbol)
+      .subscribe(
+        (data) =>
+          (this.cryptoDesc =
+            data.data.profile.general.background.background_details)
+      );
   }
 
   getGradientColor(percentage: number): string {
@@ -49,4 +59,5 @@ export class SingleCryptoDetailsComponent {
       this.usdValue = this.cryptoValue / this.cryptoRate;
     }
   }
+  isClamped: boolean = true;
 }
