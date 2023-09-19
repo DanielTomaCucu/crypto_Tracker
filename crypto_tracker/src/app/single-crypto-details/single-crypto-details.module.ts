@@ -9,6 +9,7 @@ import { SingleCryptoInfoComponent } from './single-crypto-info/single-crypto-in
 import { FormsModule } from '@angular/forms';
 import { RemoveAnchorPipe } from './removeAnchor.pipe';
 import { InvestorsComponent } from './investors/investors.component';
+import { ContributorsComponent } from './contributors/contributors.component';
 
 const routes: Routes = [{ path: '', component: SingleCryptoDetailsComponent }];
 
@@ -19,6 +20,7 @@ const routes: Routes = [{ path: '', component: SingleCryptoDetailsComponent }];
     SingleCryptoInfoComponent,
     RemoveAnchorPipe,
     InvestorsComponent,
+    ContributorsComponent,
   ],
   exports: [RouterModule, RemoveAnchorPipe],
   imports: [
