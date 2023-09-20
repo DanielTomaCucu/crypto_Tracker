@@ -3,6 +3,7 @@ import { CryptoListService } from './crypto-list.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-crypto-list',
@@ -28,20 +29,35 @@ export class CryptoListComponent implements AfterViewInit {
     'supply',
   ];
   dataSource = new MatTableDataSource<any>([]);
+  subs: Subscription;
+  isLoading: boolean = true;
 
-  constructor(private cryptoListService: CryptoListService, private router:Router) {}
+  constructor(
+    private cryptoListService: CryptoListService,
+    private router: Router
+  ) {
+    this.subs = new Subscription();
+  }
 
   ngAfterViewInit() {
     this.fetchData();
   }
 
   fetchData() {
-    this.cryptoListService
+    this.isLoading = true;
+    this.subs = this.cryptoListService
       .getAssets(this.pageIndex, this.pageSize)
-      .subscribe((data) => {
-        this.cryptoList = data.data;
-        this.dataSource.data = this.cryptoList;
-      });
+      .subscribe(
+        (data) => {
+          this.cryptoList = data.data;
+          this.dataSource.data = this.cryptoList;
+          this.isLoading = false;
+        },
+        (error) => {
+          console.error('Error fetching data:', error);
+          this.isLoading = false; 
+        }
+      );
   }
 
   pageChanged(event: any) {
@@ -69,7 +85,10 @@ export class CryptoListComponent implements AfterViewInit {
       this.fetchData();
     }
   }
-  redirectToCoin(slug:string) {
-this.router.navigate([`/${slug}`])
+  redirectToCoin(slug: string) {
+    this.router.navigate([`/${slug}`]);
+  }
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 }

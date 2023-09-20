@@ -10,6 +10,14 @@ td {
 .no-margin {
   margin-bottom: 0px;
 }
-mat-table{
-box-shadow: none;
+mat-table {
+  box-shadow: none;
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5em;
+  font-weight: bold;
 }
