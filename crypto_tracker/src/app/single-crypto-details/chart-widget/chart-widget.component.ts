@@ -43,7 +43,6 @@ export class ChartWidgetComponent {
       locale: 'en',
       enable_publishing: false,
       gridColor: 'rgba(101, 101, 101, 0.06)',
-
       save_image: false,
       hide_volume: true,
       container_id: 'tradingview_a8029',

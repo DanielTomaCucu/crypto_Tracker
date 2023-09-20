@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SingleCryptoInfoService } from './single-crypto-info.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-single-crypto-info',
@@ -9,11 +10,18 @@ import { SingleCryptoInfoService } from './single-crypto-info.service';
 export class SingleCryptoInfoComponent {
   @Input() symbol: string | undefined | null;
   info: any;
-  constructor(private singleCryptoInfo: SingleCryptoInfoService) {}
+  subs: Subscription;
+  constructor(private singleCryptoInfo: SingleCryptoInfoService) {
+    this.subs = new Subscription();
+  }
   ngOnInit() {
-    this.singleCryptoInfo.getCryptoInfo(this.symbol).subscribe((data) => {
-      console.log(data.data);
-      this.info=data.data
-    });
+    this.subs = this.singleCryptoInfo
+      .getCryptoInfo(this.symbol)
+      .subscribe((data) => {
+        this.info = data.data;
+      });
+  }
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 }

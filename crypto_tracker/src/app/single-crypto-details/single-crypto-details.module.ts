@@ -10,7 +10,9 @@ import { FormsModule } from '@angular/forms';
 import { RemoveAnchorPipe } from './removeAnchor.pipe';
 import { InvestorsComponent } from './investors/investors.component';
 import { ContributorsComponent } from './contributors/contributors.component';
-
+import { SupplyComponent } from './supply/supply.component';
+import { MatTableModule } from '@angular/material/table';
+import { PrettyPrintPipe } from './prettyPrint.pipe';
 const routes: Routes = [{ path: '', component: SingleCryptoDetailsComponent }];
 
 @NgModule({
@@ -21,6 +23,8 @@ const routes: Routes = [{ path: '', component: SingleCryptoDetailsComponent }];
     RemoveAnchorPipe,
     InvestorsComponent,
     ContributorsComponent,
+    SupplyComponent,
+    PrettyPrintPipe,
   ],
   exports: [RouterModule, RemoveAnchorPipe],
   imports: [
@@ -29,6 +33,7 @@ const routes: Routes = [{ path: '', component: SingleCryptoDetailsComponent }];
     MatIconModule,
     RouterModule.forChild(routes),
     FormsModule,
+    MatTableModule,
   ],
 })
 export class SingleCryptoDetailsModule {}
