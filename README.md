@@ -1,6 +1,6 @@
 # crypto_Tracker
 
-This project is a minimalistic replica of popular crypto tracking websites, leveraging APIs provided by Messari and widgets from TradingView to visualize and navigate cryptocurrency data.
+This project is a minimalistic replica of popular crypto tracking websites, like coinmarketcap and CoinGecko leveraging APIs provided by Messari and widgets from TradingView to visualize and navigate cryptocurrency data.
 
 # Overview
 The application fetches and displays real-time crypto data by making HTTP requests to the Messari APIs. Users can explore crypto price data, historical charts, and other relevant metrics in a manner similar to mainstream crypto tracking platforms.
@@ -14,8 +14,8 @@ Data Exploration: Delve into detailed cryptocurrency data, visualizing price tre
 Responsive Design: Tailored with Tailwind CSS, the application is optimized for various screen sizes, ensuring a seamless user experience across devices.
 Real-time Widgets: Integrated TradingView widgets provide users with dynamic and real-time data visualization.
 # Purpose
-This project was developed as a hands-on exercise to learn more about Tailwind CSS. Along the journey, I integrated third-party APIs like Messari into Angular applications, enhancing my proficiency in Angular, HTML, and SCSS.
+This project was developed as a hands-on exercise to learn more about Tailwind CSS. Along the journey, I integrated third-party APIs from Messari and widgets for charting from Tradingview, enhancing my proficiency in Angular, HTML, and SCSS.
 
-Messari API Documentation: http://web.archive.org/web/20201226041150/https://messari.io/api/docs
-Tradingview Widgets: https://www.tradingview.com/widget/
-The project can be found here: https://crypto-tracker-danieltomacucu.vercel.app
+* Messari API Documentation: http://web.archive.org/web/20201226041150/https://messari.io/api/docs
+* Tradingview Widgets: https://www.tradingview.com/widget/
+* The project can be found here: https://crypto-tracker-danieltomacucu.vercel.app
