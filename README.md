@@ -3,6 +3,8 @@
 This project is a minimalistic replica of popular crypto tracking websites, like coinmarketcap and CoinGecko leveraging APIs provided by Messari and widgets from TradingView to visualize and navigate cryptocurrency data.
 
 # Overview
+![Screenshot 2023-10-31 at 17 53 28](https://github.com/DanielTomaCucu/crypto_Tracker/assets/61708051/d85d2ecc-6de7-48e5-bf94-1f2212a6400e)
+
 The application fetches and displays real-time crypto data by making HTTP requests to the Messari APIs. Users can explore crypto price data, historical charts, and other relevant metrics in a manner similar to mainstream crypto tracking platforms.
 
 # Performance Considerations
